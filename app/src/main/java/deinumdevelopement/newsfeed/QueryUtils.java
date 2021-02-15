@@ -21,10 +21,6 @@ import java.util.List;
 
 import static deinumdevelopement.newsfeed.MainActivity.LOG_TAG;
 
-/**
- * Created by sam on 07/04/2018.
- */
-
 public class QueryUtils {
 
     private QueryUtils (){}
@@ -45,7 +41,7 @@ public class QueryUtils {
         return results;
 
 
-    }//fetchResults
+    }
 
 
     private static URL createURL(String stringURL){
@@ -60,7 +56,7 @@ public class QueryUtils {
 
         return url;
 
-    }//createURL
+    }
 
 
     private static String makeHttpRequest(URL url) throws IOException{
@@ -99,7 +95,7 @@ public class QueryUtils {
         }
 
         return jsonResponse;
-    }//makeHttpRequest
+    }
 
 
     private static String readFromStream(InputStream inputStream) throws IOException{
@@ -113,11 +109,11 @@ public class QueryUtils {
                 output.append(line);
                 line = reader.readLine();
             }
-        }//if statement
-                                                               // Log.i(LOG_TAG, output.toString());
+        }
+
         return output.toString();
 
-    }//readFromStream
+    }
 
 
     public static List<Result> extractFeaturesFromJson(String resultJSON){
@@ -145,9 +141,8 @@ public class QueryUtils {
 
                 Result result = new Result(sectionName, webTitle, date, webUrl);
                 results.add(result);
-                //Log.i(LOG_TAG, sectionName);
 
-            }//loop
+            }
 
 
 
@@ -156,8 +151,8 @@ public class QueryUtils {
         }
 
         return results;
-    }//extractFeaturesFromJson
+    }
 
 
 
-}//QueryUtils
+}

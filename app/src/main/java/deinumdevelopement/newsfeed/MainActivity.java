@@ -45,16 +45,13 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l){
-
                 Result currentResult = mAdapter.getItem(position);
                 Uri resultUri = Uri.parse(currentResult.getmWebsiteUrl());
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, resultUri);
                 startActivity(websiteIntent);
             }
-        });//setonitemclicklister
-    }//OnCreate
-
-    //_____________LOADER CALLBACKS________________________________________________________________
+        });
+    }
     @Override
     public Loader<List<Result>> onCreateLoader(int i, Bundle bundle) {
 
@@ -64,24 +61,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<Result>> loader, List<Result> results) {
-
-/*        //For the Progress Bar, Get rid of it when it's done.
-        View loadingIndicator = findViewById(R.id.loading_inticator);
-        loadingIndicator.setVisibility(View.GONE);
-
-        //For my Empty View
-        if(!isConnected){
-            mEmptyStateTextView.setText("No Internet Connection");
-        }else {
-            mEmptyStateTextView.setText("No Earthquakes Found");
-        }
-*/
-        // Clear the adapter of previous earthquake data
         mAdapter.clear();
-
-
-        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
-        // data set. This will trigger the ListView to update.
         if (results != null && !results.isEmpty()) {
             mAdapter.addAll(results);
         }
@@ -89,8 +69,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoaderReset(Loader<List<Result>> loader) {
-        // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }
 
-}//MainActivity
+}
